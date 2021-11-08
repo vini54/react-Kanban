@@ -1,0 +1,25 @@
+.taskButon{
+   padding: 5px;
+   border-radius: 5px;
+   outline: none;
+   border: none;
+}
+.itemContent{
+   padding: 10px;
+   background-color: #a6b9f2;
+   border-radius: 5px;
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+}
+.itemContent p{
+   color: #06102d;
+   cursor: pointer;
+   font-size: 18px;
+}
+.itemContent select{
+   border: none;
+   padding: 5px;
+   border-radius: 5px;
+   outline: none;
+}

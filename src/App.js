@@ -1,23 +1,76 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 
+import Navbar from './components/Navbar/Navbar';
+import TaskList from './components/TaskList/TaskList';
+import { useState } from 'react/cjs/react.development';
+
+let idAcc = 0
+const generateId = () => {
+  idAcc = idAcc + 1
+  return idAcc
+}
+
 function App() {
+  const [tasks, setTasks] = useState([])
+
+  const addTask = (title, state) => {
+    const newTask = {
+      id: generateId(),
+      title,
+      state 
+    }
+    setTasks((existingTasks) => {
+      return [...existingTasks, newTask]
+    })
+  }
+
+  const UpdateTask = (id, title, state) => {
+    setTasks((existingTasks) => {
+      return existingTasks.map((task) => {
+        if(task.id === id){
+          return {...task, title, state}
+        }else{
+          return task
+        }
+      })
+    })
+  }
+  const deleteTask = (id) => {
+    setTasks((existingTasks) => {
+      return existingTasks.filter((task) => task.id !== id)
+    })
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <div className='taskLists'>
+        <TaskList 
+          children='Pendente'
+          onAddTask={addTask}
+          tasks={tasks.filter((t) => t.state === 'Pendente')}
+          ontaskUpdate={UpdateTask}
+          taskState='Pendente'
+          onDeleteTask={deleteTask}
+        />
+        <TaskList 
+          children='Fazendo'
+          onAddTask={addTask}
+          tasks={tasks.filter((t) => t.state === 'Fazendo')}
+          ontaskUpdate={UpdateTask}
+          taskState='Fazendo'
+          onDeleteTask={deleteTask}
+        />
+        <TaskList 
+          children='Completa'
+          onAddTask={addTask}
+          tasks={tasks.filter((t) => t.state === 'Completa')}
+          ontaskUpdate={UpdateTask}
+          taskState='Completa'
+          onDeleteTask={deleteTask}
+        />
+      </div>
     </div>
   );
 }

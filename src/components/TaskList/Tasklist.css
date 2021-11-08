@@ -1,0 +1,32 @@
+.Tasklist{
+   width: 30%;
+   min-width: 250px;
+   background-color: #7979ec;
+   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+   padding: 10px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 10px;
+}
+.Tasklist .title{
+   width: 100%;
+   background-color: #4d4de5;
+   border-radius: 5px;
+   padding: 5px;
+   font-weight: 600;
+}
+.Tasklist .content{
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+}
+.Tasklist .content button{
+   border: none;
+   padding: 5px;
+   border-radius: 5px;
+   background-color: #20df50;
+   color: #fff;
+   cursor: pointer;
+}
