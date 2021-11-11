@@ -3,7 +3,7 @@ import './App.css';
 
 import Navbar from './components/Navbar/Navbar';
 import TaskList from './components/TaskList/TaskList';
-import { useState } from 'react/cjs/react.development';
+import { useState } from 'react';
 
 let idAcc = 0
 const generateId = () => {
